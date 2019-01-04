@@ -22,11 +22,20 @@ void printToken( TokenType token, const char* tokenString )
     case UNTIL:
     case READ:
     case WRITE:
+        // 增加
+    case WHILE:
+    case DO:
+    case TO:
+    case DOWNTO:
+    case FOR:
+    case ENDDO:
+    case ENDWHILE:
       fprintf(listing,
          "reserved word: %s\n",tokenString);
       break;
     case ASSIGN: fprintf(listing,":=\n"); break;
     case LT: fprintf(listing,"<\n"); break;
+    case GT: fprintf(listing,">\n"); break;
     case EQ: fprintf(listing,"=\n"); break;
     case LPAREN: fprintf(listing,"(\n"); break;
     case RPAREN: fprintf(listing,")\n"); break;
@@ -34,6 +43,8 @@ void printToken( TokenType token, const char* tokenString )
     case PLUS: fprintf(listing,"+\n"); break;
     case MINUS: fprintf(listing,"-\n"); break;
     case TIMES: fprintf(listing,"*\n"); break;
+        // 添加
+    case MOD:fprintf(listing,"%%\n"); break;
     case OVER: fprintf(listing,"/\n"); break;
     case ENDFILE: fprintf(listing,"EOF\n"); break;
     case NUM:
@@ -98,7 +109,7 @@ char * copyString(char * s)
   char * t;
   if (s==NULL) return NULL;
   n = strlen(s)+1;
-  t = malloc(n);
+  t = (char *)malloc(n);
   if (t==NULL)
     fprintf(listing,"Out of memory error at line %d\n",lineno);
   else strcpy(t,s);
@@ -108,7 +119,7 @@ char * copyString(char * s)
 /* Variable indentno is used by printTree to
  * store current number of spaces to indent
  */
-static indentno = 0;
+static int indentno = 0;
 
 /* macros to increase/decrease indentation */
 #define INDENT indentno+=2
@@ -145,6 +156,16 @@ void printTree( TreeNode * tree )
           break;
         case WriteK:
           fprintf(listing,"Write\n");
+          break;
+          // 添加
+        case DoWhileK:
+          fprintf(listing,"DoWhile Kind\n");
+          break;
+        case ForK:
+          fprintf(listing,"For Kind\n");
+          break;
+        case WhileK:
+          fprintf(listing,"While Kind\n");
           break;
         default:
           fprintf(listing,"Unknown ExpNode kind\n");

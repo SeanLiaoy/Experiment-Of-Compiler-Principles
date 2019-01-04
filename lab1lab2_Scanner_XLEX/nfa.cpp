@@ -588,8 +588,71 @@ void DFA::getCurrentDfaNodesCode(DFANode *n, vector<string> &lines, int tabsnum)
 
     }
     if(isEndNode(n)) lines.push_back(getTabTexts(tabsnum) + "accept;");
-
 }
+
+void DFA::getCCode(DFANode *n, std::vector<string> &lines, int tabsnum)
+{
+    int sz = n->edges.size();
+    if(sz > 0)
+    {
+        vector<DFAEdge> goNextEdges;
+        vector<DFAEdge> selfEdges;
+        bool firstLine = true;
+        lines.push_back(getTabTexts(tabsnum) + "char ch = getChar();");
+        for(DFAEdge e : n->edges)
+        {
+            if(e.next == n)
+            {
+                selfEdges.push_back(e);
+            }
+            else
+            {
+                goNextEdges.push_back(e);
+            }
+        }
+        if(selfEdges.size() > 0)
+        {
+            string value = "ch==";
+            value.push_back(selfEdges[0].word);
+            for(size_t i = 1; i < selfEdges.size(); i++)
+            {
+                value += " || ch==";
+                value.push_back(selfEdges[i].word);
+            }
+            string line1 = getTabTexts(tabsnum) + "while( " + value + ")";
+            string line2 = getTabTexts(tabsnum) + "{";
+            string line3 = getTabTexts(tabsnum+1) + "Input(ch);";
+            string line4 = getTabTexts(tabsnum+1) + "ch=getChar();";
+            string line5 = getTabTexts(tabsnum) + "}";
+            lines.push_back(line1);
+            lines.push_back(line2);
+            lines.push_back(line3);
+            lines.push_back(line4);
+            lines.push_back(line5);
+        }
+        if(goNextEdges.size() > 0)
+        {
+            for(DFAEdge e : goNextEdges)
+            {
+                string line1 = getTabTexts(tabsnum) + "if(ch==" + e.word + ")";
+                string line2 = getTabTexts(tabsnum) + "{";
+                string line3 = getTabTexts(tabsnum+1) + "Input(ch);";
+                string line4 = getTabTexts(tabsnum) + "}";
+                if(!firstLine) line1 = "else " + line1;
+                lines.push_back(line1);
+                lines.push_back(line2);
+                lines.push_back(line3);
+                getCCode(e.next,lines, tabsnum+1);
+                lines.push_back(line4);
+                firstLine = false;
+            }
+            lines.push_back(getTabTexts(tabsnum) + "else {cout << \"error!\";  exit(1);}");
+        }
+
+    }
+    if(isEndNode(n)) lines.push_back(getTabTexts(tabsnum) + "Done();");
+}
+
 
 void NfaMananger::miniDfaToCodes()
 {
@@ -607,6 +670,22 @@ void NfaMananger::miniDfaToCodes()
         cout << line << endl;
     }
 
+}
+
+void NfaMananger::miniDfaToC()
+{
+    codes = "";
+    vector<string> lines;
+
+    DFANode *node = this->finalMiniDFA.miniStartNode;
+    finalMiniDFA.getCCode(node, lines, 0);
+
+    for(string line : lines)
+    {
+        codes += line;
+        codes += '\n';
+        cout << line << endl;
+    }
 }
 
 NFA::NFA(char c, char id1, char id2)

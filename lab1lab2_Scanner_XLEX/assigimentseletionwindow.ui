@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>437</width>
-    <height>543</height>
+    <width>415</width>
+    <height>354</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,26 +18,26 @@
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>140</y>
+      <y>90</y>
       <width>171</width>
       <height>32</height>
      </rect>
     </property>
     <property name="text">
-     <string>作业1: C++词法分析</string>
+     <string>lab1: C++词法分析</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>200</y>
+      <y>170</y>
       <width>171</width>
       <height>32</height>
      </rect>
     </property>
     <property name="text">
-     <string>作业2:正则表达式转DFA</string>
+     <string>lab2:正则表达式转DFA</string>
     </property>
    </widget>
   </widget>
@@ -46,7 +46,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>437</width>
+     <width>415</width>
      <height>22</height>
     </rect>
    </property>

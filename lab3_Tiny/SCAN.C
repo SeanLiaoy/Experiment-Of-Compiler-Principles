@@ -26,6 +26,8 @@ static int linepos = 0; /* current position in LineBuf */
 static int bufsize = 0; /* current size of buffer string */
 static int EOF_flag = FALSE; /* corrects ungetNextChar behavior on EOF */
 
+
+
 /* getNextChar fetches the next non-blank character
    from lineBuf, reading in a new line if lineBuf is
    exhausted */
@@ -58,7 +60,9 @@ static struct
     } reservedWords[MAXRESERVED]
    = {{"if",IF},{"then",THEN},{"else",ELSE},{"end",END},
       {"repeat",REPEAT},{"until",UNTIL},{"read",READ},
-      {"write",WRITE}};
+      {"write",WRITE}, {"while",WHILE}, {"endwhile",ENDWHILE},
+      {"do",DO},{"to",TO},{"downto",DOWNTO},{"for",FOR},
+      {"enddo",ENDDO}};
 
 /* lookup an identifier to see if it is a reserved word */
 /* uses linear search */
@@ -115,6 +119,9 @@ TokenType getToken(void)
              case '<':
                currentToken = LT;
                break;
+             case '>':
+               currentToken = GT;
+               break;
              case '+':
                currentToken = PLUS;
                break;
@@ -135,6 +142,9 @@ TokenType getToken(void)
                break;
              case ';':
                currentToken = SEMI;
+               break;
+             case '%':
+               currentToken = MOD;
                break;
              default:
                currentToken = ERROR;
@@ -200,4 +210,12 @@ TokenType getToken(void)
    }
    return currentToken;
 } /* end getToken */
+
+
+void resetScan()
+{
+    linepos = 0;
+    bufsize = 0;
+    EOF_flag = FALSE;
+}
 

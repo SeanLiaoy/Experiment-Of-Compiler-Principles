@@ -117,6 +117,8 @@ public:
     void delNode(DFANode *node);    // 从当前DFA中删除某个结点
     void printResult(); // 打印当前DFA结果到控制台
     void getCurrentDfaNodesCode(DFANode *n, std::vector<std::string> &lines, int tabsnum);
+
+    void getCCode(DFANode *n, std::vector<std::string> &lines, int tabsnum);
 };
 
 class NfaMananger
@@ -149,6 +151,8 @@ public:
     void minimizeDFA();     // 最小化DFA(划分法）
     void dealMiniDFA();     // 最小DFA图后处理
     void miniDfaToCodes();  // 将最小DFA图转换为代码
+
+    void miniDfaToC();  //将最小DFA图转换为C语言代码
 };
 
 

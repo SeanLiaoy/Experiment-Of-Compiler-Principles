@@ -1,0 +1,5 @@
+A--> B C c | g D B
+B--> b C D E | #
+C--> D a B | c a
+D--> d D | #
+E--> g A f | c

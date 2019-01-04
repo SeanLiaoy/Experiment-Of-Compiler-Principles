@@ -27,7 +27,7 @@ static struct{
 class Scanner
 {
 private:
-    FILE *source = NULL;   //Source File Name
+    FILE *source = NULL;   // Source File Name
     char lineBuf[BUFLEN];  // Holds the current line
     int linePos = 0;  //current position of the LineBuf
     int bufSize = 0;

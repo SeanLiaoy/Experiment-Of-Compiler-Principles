@@ -2,6 +2,8 @@
 #define ASSIGIMENTSELETIONWINDOW_H
 
 #include <QMainWindow>
+#include "mainwindow.h"
+#include "regdialog.h"
 
 namespace Ui {
 class AssigimentSeletionWindow;
@@ -14,6 +16,11 @@ class AssigimentSeletionWindow : public QMainWindow
 public:
     explicit AssigimentSeletionWindow(QWidget *parent = 0);
     ~AssigimentSeletionWindow();
+
+private slots:
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::AssigimentSeletionWindow *ui;

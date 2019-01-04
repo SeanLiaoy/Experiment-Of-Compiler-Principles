@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include "nfa.h"
 #include "regdialog.h"
+#include "assigimentseletionwindow.h"
 using namespace std;
 
 
@@ -28,8 +29,10 @@ int main(int argc, char *argv[])
 //    w.show();
 
 //    test();
-    RegDialog *regWindow = new RegDialog();
-    regWindow->show();
+//    RegDialog *regWindow = new RegDialog();
+//    regWindow->show();
+    AssigimentSeletionWindow w;
+    w.show();
 //    return 0;
     return a.exec();
 }

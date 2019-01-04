@@ -155,7 +155,8 @@ void RegDialog::on_pushButton_clicked()
     end_label3->setText(QString::fromStdString(endNodeText));
 
 
-    manager.miniDfaToCodes();
+//    manager.miniDfaToCodes();
+    manager.miniDfaToC();
     QTextEdit *codeText = ui->textEdit;
     codeText->setText(QString::fromStdString(manager.codes));
 }

@@ -5,10 +5,10 @@
 /* Kenneth C. Louden                                */
 /****************************************************/
 
-#include "globals.h"
-#include "util.h"
-#include "scan.h"
-#include "parse.h"
+#include "GLOBALS.H"
+#include "UTIL.H"
+#include "SCAN.H"
+#include "PARSE.H"
 
 static TokenType token; /* holds current token */
 
@@ -24,6 +24,10 @@ static TreeNode * exp(void);
 static TreeNode * simple_exp(void);
 static TreeNode * term(void);
 static TreeNode * factor(void);
+static TreeNode * dowhile_stmt(void);
+static TreeNode * while_stmt(void);
+static TreeNode * for_stmt(void);
+
 
 static void syntaxError(char * message)
 { fprintf(listing,"\n>>> ");
@@ -43,10 +47,11 @@ static void match(TokenType expected)
 TreeNode * stmt_sequence(void)
 { TreeNode * t = statement();
   TreeNode * p = t;
-  while ((token!=ENDFILE) && (token!=END) &&
-         (token!=ELSE) && (token!=UNTIL))
+  while ((token!=ENDFILE) && (token!=END) && (token!=ENDDO) && (token!=ENDWHILE) &&
+         (token!=ELSE) && (token!=UNTIL) && (token!=WHILE) /*为了解决dowhile 结束问题*/)
   { TreeNode * q;
-    match(SEMI);
+    if(token == SEMI)   match(SEMI);
+    if(token == ENDFILE || token==END || token==ENDDO || token==ENDWHILE)  break;
     q = statement();
     if (q!=NULL) {
       if (t==NULL) t = p = q;
@@ -67,6 +72,9 @@ TreeNode * statement(void)
     case ID : t = assign_stmt(); break;
     case READ : t = read_stmt(); break;
     case WRITE : t = write_stmt(); break;
+    case DO : t = dowhile_stmt(); break;
+    case WHILE: t = while_stmt(); break;
+    case FOR: t = for_stmt(); break;
     default : syntaxError("unexpected token -> ");
               printToken(token,tokenString);
               token = getToken();
@@ -75,17 +83,33 @@ TreeNode * statement(void)
   return t;
 }
 
+//TreeNode * if_stmt(void)
+//{ TreeNode * t = newStmtNode(IfK);
+//  match(IF);
+//  if (t!=NULL) t->child[0] = exp();
+//  match(THEN);
+//  if (t!=NULL) t->child[1] = stmt_sequence();
+//  if (token==ELSE) {
+//    match(ELSE);
+//    if (t!=NULL) t->child[2] = stmt_sequence();
+//  }
+//  match(END);
+//  return t;
+//}
+
+// 改
+
 TreeNode * if_stmt(void)
 { TreeNode * t = newStmtNode(IfK);
   match(IF);
+  match(LPAREN);
   if (t!=NULL) t->child[0] = exp();
-  match(THEN);
+  match(RPAREN);
   if (t!=NULL) t->child[1] = stmt_sequence();
   if (token==ELSE) {
     match(ELSE);
     if (t!=NULL) t->child[2] = stmt_sequence();
   }
-  match(END);
   return t;
 }
 
@@ -126,7 +150,7 @@ TreeNode * write_stmt(void)
 
 TreeNode * exp(void)
 { TreeNode * t = simple_exp();
-  if ((token==LT)||(token==EQ)) {
+  if ((token==LT)||(token==EQ)||(token==GT)) {
     TreeNode * p = newExpNode(OpK);
     if (p!=NULL) {
       p->child[0] = t;
@@ -199,17 +223,73 @@ TreeNode * factor(void)
   return t;
 }
 
+// 下面是添加的
+
+TreeNode* while_stmt(void)
+{
+    TreeNode *t = newStmtNode(WhileK);
+    match(WHILE);
+    if(t!=NULL)
+        t->child[0] = exp();
+    match(DO);
+    if(t!=NULL)
+        t->child[1] = stmt_sequence();
+    match(ENDWHILE);
+    return t;
+}
+
+TreeNode* dowhile_stmt(void)
+{
+    TreeNode *t = newStmtNode(DoWhileK);
+    match(DO);
+    if(t!=NULL)
+        t->child[0] = stmt_sequence();
+    match(WHILE);
+    if(t!=NULL)
+    {
+        match(LPAREN);
+        t->child[1] = exp();
+        match(RPAREN);
+    }
+    return t;
+}
+
+TreeNode* for_stmt(void)
+{
+    TreeNode *t = newStmtNode(ForK);
+    match(FOR);
+    if(t!=NULL && token==ID)
+        t->attr.name=copyString(tokenString);
+    match(ID);
+    match(ASSIGN);
+    if(t!=NULL)
+        t->child[0] = simple_exp();
+    if(token==TO)
+        match(TO);
+    else if(token==DOWNTO)
+        match(DOWNTO);
+    if(t!=NULL)
+        t->child[1] = simple_exp();
+    match(DO);
+    if(t!=NULL)
+        t->child[2] = stmt_sequence();
+    match(ENDDO);
+    return t;
+}
+
+
 /****************************************/
 /* the primary function of the parser   */
 /****************************************/
 /* Function parse returns the newly 
  * constructed syntax tree
  */
-TreeNode * parse(void)
-{ TreeNode * t;
-  token = getToken();
-  t = stmt_sequence();
-  if (token!=ENDFILE)
+TreeNode* parse(void)
+{
+    TreeNode * t;
+    token = getToken();
+    t = stmt_sequence();
+    if (token!=ENDFILE)
     syntaxError("Code ends before file\n");
-  return t;
+    return t;
 }

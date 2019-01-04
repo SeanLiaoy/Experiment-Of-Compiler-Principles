@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>C++词法分析    -Author: 软件四班 廖思源</string>
+   <string>C++词法分析    -Author: SeanLiao</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLineEdit" name="lineEdit">
