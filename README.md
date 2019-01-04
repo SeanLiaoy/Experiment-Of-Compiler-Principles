@@ -1,4 +1,4 @@
-# <center>Experiment of Compiler Principles</center>
+# <p align="center">Experiment of Compiler Principles</p>
 
 ## Including: 
 1. C++ Lexical Analysis(Scanner)  
@@ -16,9 +16,9 @@
 
 ---
 
-# <center> Getting Start </center>
+# <p align="center"> Getting Start </p>
 
-## <center> 开发环境 </center>
+## <p align="center"> 开发环境 </p>
 - **Kit:** Desktop Qt 5.11.1 clang 64bit
 - **编译器:** Clang
 
@@ -30,14 +30,14 @@
 
 ---
 
-## <center> 怎么运行 </center>
+## <p align="center"> 怎么运行 </p>
 1. 确保你的电脑安装了Qt Creator 5
 2. 点击文件夹内的 *.pro 打开工程
 3. Configure编译套件，然后运行
 
 ---
 
-# <center> Tutorial </center>
+# <p align="center"> Tutorial </p>
 
 ## 一、C语言词法分析器
 ###实验要求：
@@ -48,7 +48,11 @@
 
 ![运行程序显示Windows界面](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_1.png “运行程序显示Windows界面”)
 
+
 ![打开文件1](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_2.png "打开文件")
+
+<div align=center><img width="480" height="640" src="https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_2.png" alt="打开文件" /></div>
+
 
 ![词法分析](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_3.png "词法分析")
 
