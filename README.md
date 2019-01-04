@@ -1,7 +1,5 @@
 # <p align="center">Experiment of Compiler Principles</p>
 
----
-
 ## Including: 
 1. C++ Lexical Analysis(Scanner)  
 2. Thompson way to generate NFA from regular expression and transform it to DFA, then minimize the DFA and turn it into source codes. 
@@ -16,8 +14,6 @@
 4. LL(1)分析表的构造
 
 # <p align="center"> Getting Start </p>
-
----
 
 ## <p align="center"> 开发环境 </p>
 - **Kit:** Desktop Qt 5.11.1 clang 64bit
@@ -36,9 +32,8 @@
 
 # <p align="center"> Tutorial </p>
 
----
-
 ## 一、C语言词法分析器
+
 ###实验要求：
 >- 打开一个C++源文件，进行词法分析
 >- 要求应用程序应为Windows界面
@@ -62,7 +57,7 @@
 
 <div align=center><img src="https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/2_1.png" alt="打开文件" /></div>
 
-<div align=center><img width="400" height="600" src="https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/2_8.png" alt="打开文件" /></div>
+<div align=center><img width="400" height="600" src="https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/2_8png.png" alt="打开文件" /></div>
 
 
 
@@ -85,8 +80,6 @@
 >>- if_stmt-->if(exp) stmt-sequence else stmt-sequence | if(exp) stmt-sequence
 
 ![程序效果图](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/3_1.png "效果图")
-
----
 
 ## 四、LL(1)分析表的构造
 >**设计一个应用软件，以实现LL(1)分析器的生成。包括文法规则输入、消除左递归、消除左公因子、生成LL(1)分析表、输入分析句子并展示分析过程。**
