@@ -1,11 +1,9 @@
 # <p align="center">Experiment of Compiler Principles</p>
-
 ## Including: 
 1. C++ Lexical Analysis(Scanner)  
 2. Thompson way to generate NFA from regular expression and transform it to DFA, then minimize the DFA and turn it into source codes. 
 3. Tiny Parser
 4. LL(1) Analyzer
-
 
 ## 主要包括：
 1. C语言词法分析（代码扫描器）  
@@ -14,7 +12,6 @@
 4. LL(1)分析表的构造
 
 # <p align="center"> Getting Start </p>
-
 ## <p align="center"> 开发环境 </p>
 - **Kit:** Desktop Qt 5.11.1 clang 64bit
 - **编译器:** Clang
@@ -24,17 +21,14 @@
 
     #include <cstring>
 **即可**
-
 ## <p align="center"> 怎么运行 </p>
 1. 确保你的电脑安装了Qt Creator 5
 2. 点击文件夹内的 *.pro 打开工程
 3. Configure编译套件，然后运行
 
 # <p align="center"> Tutorial </p>
-
 ## 一、C语言词法分析器
-
-###实验要求：
+### 实验要求：
 >- 打开一个C++源文件，进行词法分析
 >- 要求应用程序应为Windows界面
 >- 为了提高C++源程序的可读性，C++程序在书写过程中加入了空行、空格、缩进、注释等。假设你想牺牲可读性，以节省磁盘空间，那么你可以存贮一个删除了所有不必要空格和注释的C++源程序的压缩文本。因此，程序中还应该有这样的压缩功能
@@ -49,17 +43,12 @@
 
 <div align=center><img width="600" height="400" src="https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_4.png" /></div>
 
-
-
 ## 二、正则表达式代码生成XLEX
 > **设计一个应用软件，以实现将正则表达式-->NFA--->DFA-->DFA最小化-->词法分析程序。本实验基于Qt设计Windows界面并进行可视化操作。**
-
 
 <div align=center><img src="https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/2_1.png" alt="打开文件" /></div>
 
 <div align=center><img width="400" height="600" src="https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/2_8png.png" alt="打开文件" /></div>
-
-
 
 ## 三、Tiny语言语法树生成
 >**扩充的语法规则有：实现 while、do while、for语句、大于>比较运算符号以及求余计算式子，具体文法规则自行构造。**
