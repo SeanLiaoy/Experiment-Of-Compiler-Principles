@@ -18,22 +18,21 @@
 >- 为了提高C++源程序的可读性，C++程序在书写过程中加入了空行、空格、缩进、注释等。假设你想牺牲可读性，以节省磁盘空间，那么你可以存贮一个删除了所有不必要空格和注释的C++源程序的压缩文本。因此，程序中还应该有这样的压缩功能
 >- 实现减小源文件大小的压缩功能
 
-![运行程序显示Windows界面]()
+![运行程序显示Windows界面](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_1.png)
 
-![打开文件1]()
+![打开文件1](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_2.png)
 
-![打开文件2]()
+![词法分析](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_3.png)
 
-![词法分析]()
-
-![代码压缩]()
-
+![代码压缩](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_4.png)
 
 
 
 ## 二、正则表达式代码生成XLEX
 >设计一个应用软件，以实现将正则表达式-->NFA--->DFA-->DFA最小化-->词法分析程序。本实验基于Qt设计Windows界面并进行可视化操作。
-![程序执行流程图]()
+![程序执行流程图](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/2_1.png)
+
+![程序执行流程图](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/2_8png.png)
 
 ## 三、Tiny语言语法树生成
 >扩充的语法规则有：实现 while、do while、for语句、大于>比较运算符号以及求余计算式子，具体文法规则自行构造。
@@ -53,7 +52,7 @@
 
 >>- if_stmt-->if(exp) stmt-sequence else stmt-sequence | if(exp) stmt-sequence
 
-![程序效果图]()
+![程序效果图](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/3_1.png)
 
 ## 四、LL(1)分析表的构造
 >设计一个应用软件，以实现LL(1)分析器的生成。包括文法规则输入、消除左递归、消除左公因子、生成LL(1)分析表、输入分析句子并展示分析过程。
@@ -64,4 +63,4 @@
 >>- 需要提供窗口以便用户输入需要分析的句子。
 >>- 需要提供窗口以便用户查看使用LL(1)分析该句子的过程。
 
-![程序效果图]()
+![程序效果图](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/4_1.png)
