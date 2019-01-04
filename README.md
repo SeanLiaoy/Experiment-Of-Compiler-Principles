@@ -16,7 +16,7 @@
 - **Kit:** Desktop Qt 5.11.1 clang 64bit
 - **编译器:** Clang
 
-**注：如果编译器不同可能导致直接运行错误，主要是找不到一些std标准函数（如memset)
+**注：如果编译器不同可能导致直接编译错误，主要是找不到一些std标准函数（如memset)
 ，尝试添加头文件**
 
     #include <cstring>
