@@ -30,6 +30,7 @@
 
 ## 二、正则表达式代码生成XLEX
 >设计一个应用软件，以实现将正则表达式-->NFA--->DFA-->DFA最小化-->词法分析程序。本实验基于Qt设计Windows界面并进行可视化操作。
+
 ![程序执行流程图](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/2_1.png)
 
 ![程序执行流程图](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/2_8png.png)
