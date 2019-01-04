@@ -1,39 +1,69 @@
-# ExperimentOfCompiling
-# Course Experiment of compiling. Including:
+# <center>Experiment of Compiler Principles</center>
+
+## Including: 
 1. C++ Lexical Analysis(Scanner)  
 2. Thompson way to generate NFA from regular expression and transform it to DFA, then minimize the DFA and turn it into source codes. 
 3. Tiny Parser
 4. LL(1) Analyzer
 
-# C++编译原理实验，主要包括：
+---
+
+## 主要包括：
 1. C语言词法分析（代码扫描器）  
 2. 用递归方法实现的Thompson算法将正则表达式转换为NFA、DFA、最小化DFA并生成C语言代码。
-3. 递归向下子过程实现的tiny语言语法树生成
+3. 递归向下子过程实现的Tiny语言语法树生成
 4. LL(1)分析表的构造
 
+---
+
+# <center> Getting Start </center>
+
+## <center> 开发环境 </center>
+- **Kit:** Desktop Qt 5.11.1 clang 64bit
+- **编译器:** Clang
+
+注：如果编译器不同可能导致直接运行错误，主要是找不到一些std标准函数（如memset)
+，尝试添加头文件
+
+    #include <cstring>
+即可
+
+---
+
+## <center> 怎么运行 </center>
+1. 确保你的电脑安装了Qt Creator 5
+2. 点击文件夹内的 *.pro 打开工程
+3. Configure编译套件，然后运行
+
+---
+
+# <center> Tutorial </center>
+
 ## 一、C语言词法分析器
-实验要求：
+###实验要求：
 >- 打开一个C++源文件，进行词法分析
 >- 要求应用程序应为Windows界面
 >- 为了提高C++源程序的可读性，C++程序在书写过程中加入了空行、空格、缩进、注释等。假设你想牺牲可读性，以节省磁盘空间，那么你可以存贮一个删除了所有不必要空格和注释的C++源程序的压缩文本。因此，程序中还应该有这样的压缩功能
 >- 实现减小源文件大小的压缩功能
 
-![运行程序显示Windows界面](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_1.png)
+![运行程序显示Windows界面](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_1.png “运行程序显示Windows界面”)
 
-![打开文件1](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_2.png)
+![打开文件1](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_2.png "打开文件")
 
-![词法分析](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_3.png)
+![词法分析](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_3.png "词法分析")
 
-![代码压缩](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_4.png)
+![代码压缩](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/1_4.png "代码压缩")
 
-
+---
 
 ## 二、正则表达式代码生成XLEX
 >设计一个应用软件，以实现将正则表达式-->NFA--->DFA-->DFA最小化-->词法分析程序。本实验基于Qt设计Windows界面并进行可视化操作。
 
-![程序执行流程图](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/2_1.png)
+![程序执行流程图](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/2_1.png "程序执行流程图")
 
-![程序执行流程图](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/2_8png.png)
+![效果图](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/2_8png.png "效果图")
+
+---
 
 ## 三、Tiny语言语法树生成
 >扩充的语法规则有：实现 while、do while、for语句、大于>比较运算符号以及求余计算式子，具体文法规则自行构造。
@@ -53,7 +83,9 @@
 
 >>- if_stmt-->if(exp) stmt-sequence else stmt-sequence | if(exp) stmt-sequence
 
-![程序效果图](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/3_1.png)
+![程序效果图](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/3_1.png "效果图")
+
+---
 
 ## 四、LL(1)分析表的构造
 >设计一个应用软件，以实现LL(1)分析器的生成。包括文法规则输入、消除左递归、消除左公因子、生成LL(1)分析表、输入分析句子并展示分析过程。
@@ -64,4 +96,4 @@
 >>- 需要提供窗口以便用户输入需要分析的句子。
 >>- 需要提供窗口以便用户查看使用LL(1)分析该句子的过程。
 
-![程序效果图](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/4_1.png)
+![程序效果图](https://github.com/SeanLiaoy/ExperimentOfCompiling/blob/master/sample/4_1.png "效果图")
